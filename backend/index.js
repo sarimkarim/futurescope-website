@@ -45,9 +45,10 @@ app.use("/api/v1/resume", resumeRoute);
 
 // Start server and connect to database
 const startServer = async () => {
-    // Start server
-    app.listen(PORT, () => {
+    // Start server - bind to 0.0.0.0 for Railway/cloud hosting
+    app.listen(PORT, '0.0.0.0', () => {
         console.log(`Server running at port ${PORT}`);
+        console.log(`CORS enabled for: ${process.env.FRONTEND_URL || 'http://localhost:5173'}`);
     });
     
     // Connect to database (will retry if it fails)
