@@ -30,8 +30,31 @@ const Login = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         
-        // Validate role selection
-        if (!input.role || input.role.trim() === "") {
+        // Validate all fields with specific error messages
+        const email = input.email?.trim() || "";
+        const password = input.password?.trim() || "";
+        const role = input.role?.trim() || "";
+
+        // Check if nothing is entered
+        if (!email && !password && !role) {
+            toast.error("Enter email, password and role");
+            return;
+        }
+
+        // Check if email is missing
+        if (!email) {
+            toast.error("Email missing");
+            return;
+        }
+
+        // Check if password is missing
+        if (!password) {
+            toast.error("Password missing");
+            return;
+        }
+
+        // Check if role is missing (but email and password are entered)
+        if (!role) {
             toast.error("Please mention if you are applicant or recruiter");
             return;
         }

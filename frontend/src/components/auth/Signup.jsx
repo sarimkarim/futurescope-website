@@ -36,8 +36,45 @@ const Signup = () => {
     const submitHandler = async (e) => {
         e.preventDefault();
         
-        // Validate role selection
-        if (!input.role || input.role.trim() === "") {
+        // Validate all fields with specific error messages
+        const fullname = input.fullname?.trim() || "";
+        const email = input.email?.trim() || "";
+        const phoneNumber = input.phoneNumber?.trim() || "";
+        const password = input.password?.trim() || "";
+        const role = input.role?.trim() || "";
+
+        // Check if nothing is entered
+        if (!fullname && !email && !phoneNumber && !password && !role) {
+            toast.error("Enter all required fields");
+            return;
+        }
+
+        // Check if fullname is missing
+        if (!fullname) {
+            toast.error("Full name missing");
+            return;
+        }
+
+        // Check if email is missing
+        if (!email) {
+            toast.error("Email missing");
+            return;
+        }
+
+        // Check if phone number is missing
+        if (!phoneNumber) {
+            toast.error("Phone number missing");
+            return;
+        }
+
+        // Check if password is missing
+        if (!password) {
+            toast.error("Password missing");
+            return;
+        }
+
+        // Check if role is missing (but other fields are entered)
+        if (!role) {
             toast.error("Please mention if you are applicant or recruiter");
             return;
         }
