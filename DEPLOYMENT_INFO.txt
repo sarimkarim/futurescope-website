@@ -76,6 +76,8 @@ GitHub Repository: https://github.com/sarimkarim/futurescope-website.git
 6. Go to "Settings" tab:
    - Root Directory: backend
    - Start Command: npm start
+   - ⚠️ DO NOT set Build Command (leave it empty!)
+     If you see Build Command set to "npm start", DELETE IT!
 
 7. Go to "Settings" → "Domains" → Click "Generate Domain"
 8. Wait 2-3 minutes for deployment
