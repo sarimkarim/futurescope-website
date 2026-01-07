@@ -41,7 +41,32 @@ app.use("/api/v1/category", categoryRoute);
 app.use("/api/v1/question", questionRoute);
 app.use("/api/v1/resume", resumeRoute);
 
+// Health check route
+app.get("/", (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "FutureScope Backend API is running!",
+        status: "online",
+        endpoints: {
+            user: "/api/v1/user",
+            job: "/api/v1/job",
+            company: "/api/v1/company",
+            application: "/api/v1/application",
+            category: "/api/v1/category",
+            question: "/api/v1/question",
+            resume: "/api/v1/resume"
+        }
+    });
+});
 
+// Health check endpoint
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        success: true,
+        status: "healthy",
+        timestamp: new Date().toISOString()
+    });
+});
 
 // Start server and connect to database
 const startServer = async () => {
