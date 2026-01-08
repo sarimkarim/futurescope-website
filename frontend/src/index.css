@@ -214,3 +214,19 @@ button:focus-visible {
 .animation-delay-4000 {
   animation-delay: 4s;
 }
+
+/* Hide browser's native password reveal button */
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button:hover {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none;
+  opacity: 0;
+}
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none !important;
+  width: 0;
+  height: 0;
+}
